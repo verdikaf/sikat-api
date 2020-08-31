@@ -16,7 +16,6 @@ class CreateTKategoriLogistikTable extends Migration
         Schema::create('t_kategori_logistik', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('jenis_kategori', 45);
-            $table->timestamps();
         });
     }
 

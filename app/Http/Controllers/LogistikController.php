@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\t_logistik;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Response;
 
 class LogistikController extends Controller
 {

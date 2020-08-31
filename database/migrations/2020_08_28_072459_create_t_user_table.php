@@ -25,7 +25,6 @@ class CreateTUserTable extends Migration
             $table->string('password', 65);
             $table->string('foto', 255);
             $table->integer('id_role');
-            $table->timestamps();
         });
     }
 

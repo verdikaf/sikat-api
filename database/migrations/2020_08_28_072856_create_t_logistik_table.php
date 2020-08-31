@@ -21,7 +21,6 @@ class CreateTLogistikTable extends Migration
             $table->integer('id_supplier');
             $table->string('status', 45);
             $table->date('expired');
-            $table->timestamps();
         });
     }
 

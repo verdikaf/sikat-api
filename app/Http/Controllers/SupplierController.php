@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\t_supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SupplierController extends Controller
 {

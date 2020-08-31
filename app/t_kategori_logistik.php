@@ -8,4 +8,5 @@ class t_kategori_logistik extends Model
 {
     protected $table = 't_kategori_logistik';
     protected $fillable = ['jenis_kategori'];
+    public $timestamps = false;
 }

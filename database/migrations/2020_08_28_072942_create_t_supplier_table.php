@@ -17,7 +17,6 @@ class CreateTSupplierTable extends Migration
             $table->Increments('id');
             $table->string('nama', 45);
             $table->string('alamat', 45);
-            $table->timestamps();
         });
     }
 

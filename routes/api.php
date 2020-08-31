@@ -21,23 +21,23 @@ use Illuminate\Support\Facades\Route;
 //user
 Route::get('/user', 'UserController@index');
 Route::get('/user/{id}', 'UserController@show');
-Route::post('/user', 'UserController@store');
+Route::post('/user/add', 'UserController@store');
 Route::put('/user/{id}', 'UserController@update');
 
 //supplier
-Route::get('/supplier', 'UserController@index');
-Route::get('/supplier/{id}', 'UserController@show');
-Route::post('/supplier', 'UserController@store');
-Route::put('/supplier/{id}', 'UserController@update');
+Route::get('/supplier', 'SupplierController@index');
+Route::get('/supplier/{id}', 'SupplierController@show');
+Route::post('/supplier/add', 'SupplierController@store');
+Route::put('/supplier/{id}', 'SupplierController@update');
 
 //kategori
-Route::get('/kategori', 'UserController@index');
-Route::get('/kategori/{id}', 'UserController@show');
-Route::post('/kategori', 'UserController@store');
-Route::put('/kategori/{id}', 'UserController@update');
+Route::get('/kategori', 'KategoriController@index');
+Route::get('/kategori/{id}', 'KategoriController@show');
+Route::post('/kategori/add', 'KategoriController@store');
+Route::put('/kategori/{id}', 'KategoriController@update');
 
 //logistik
-Route::get('/logistik', 'UserController@index');
-Route::get('/logistik/{id}', 'UserController@show');
-Route::post('/logistik', 'UserController@store');
-Route::put('/logistik/{id}', 'UserController@update');
+Route::get('/logistik', 'LogistikController@index');
+Route::get('/logistik/{id}', 'LogistikController@show');
+Route::post('/logistik/add', 'LogistikController@store');
+Route::put('/logistik/{id}', 'LogistikController@update');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\t_kategori_logistik;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
