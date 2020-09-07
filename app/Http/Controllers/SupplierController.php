@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SupplierController extends Controller
 {
     public function index(){
-        return t_supplier::all();
+        return t_supplier::query()->orderByDesc('id')->paginate(3);
     }
 
     public function show($id){
