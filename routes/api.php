@@ -38,7 +38,9 @@ Route::put('/menu/{id}', 'MenuController@update');
 
 //supplier
 Route::get('/supplier', 'SupplierController@index');
+Route::get('/supplier/all', 'SupplierController@showAll');
 Route::get('/supplier/{id}', 'SupplierController@show');
+Route::get('/supplier/cari', 'SupplierController@cari');
 Route::post('/supplier', 'SupplierController@store');
 Route::put('/supplier/{id}', 'SupplierController@update');
 

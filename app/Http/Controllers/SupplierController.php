@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\t_supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Response;
 
 class SupplierController extends Controller
 {
@@ -12,8 +13,20 @@ class SupplierController extends Controller
         return t_supplier::query()->orderByDesc('id')->paginate(3);
     }
 
+    public function showAll(){
+        return t_supplier::all();
+    }
+
     public function show($id){
         return t_supplier::find($id);
+    }
+
+    public function cari(Request $request){
+
+        $cari = $request->cari;
+        $supplier = t_supplier::where('nama', 'like', "%".$cari."%")->paginate(3);
+
+        return Response()->json(['supplier' => $supplier], 200);
     }
 
     public function store(Request $request){

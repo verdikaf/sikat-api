@@ -14,7 +14,8 @@ class LogistikController extends Controller
         ->join('t_kategori_logistik','t_logistik.id_kategori','=','t_kategori_logistik.id')
         ->join('t_supplier','t_logistik.id_supplier','=','t_supplier.id')
         ->select('t_logistik.nama_barang', 't_logistik.stok', 't_logistik.status', 't_logistik.expired', 't_kategori_logistik.jenis_kategori', 't_supplier.nama')
-        ->get();
+        ->orderByDesc('id_logistik')
+        ->paginate(3);
         
         return Response::json($logistik);
     }
