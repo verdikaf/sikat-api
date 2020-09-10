@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', 'UserController@index');
 Route::get('/user/{id}', 'UserController@show');
 Route::post('/user', 'UserController@store');
+Route::post('/user/search', 'UserController@search');
 Route::put('/user/{id}', 'UserController@update');
 
 //role
@@ -40,7 +41,7 @@ Route::put('/menu/{id}', 'MenuController@update');
 Route::get('/supplier', 'SupplierController@index');
 Route::get('/supplier/all', 'SupplierController@showAll');
 Route::get('/supplier/{id}', 'SupplierController@show');
-Route::get('/supplier/cari', 'SupplierController@cari');
+Route::post('/supplier/search', 'SupplierController@search');
 Route::post('/supplier', 'SupplierController@store');
 Route::put('/supplier/{id}', 'SupplierController@update');
 
@@ -54,4 +55,5 @@ Route::put('/kategori/{id}', 'KategoriController@update');
 Route::get('/logistik', 'LogistikController@index');
 Route::get('/logistik/{id}', 'LogistikController@show');
 Route::post('/logistik', 'LogistikController@store');
+Route::post('/logistik/search', 'LogistikController@search');
 Route::put('/logistik/{id}', 'LogistikController@update');

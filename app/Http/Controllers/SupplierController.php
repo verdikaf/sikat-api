@@ -21,12 +21,14 @@ class SupplierController extends Controller
         return t_supplier::find($id);
     }
 
-    public function cari(Request $request){
+    public function search(Request $request){
 
-        $cari = $request->cari;
-        $supplier = t_supplier::where('nama', 'like', "%".$cari."%")->paginate(3);
+        $q = $request->input('q');
+        $supplier = DB::table('t_supplier')
+                    ->where('nama', 'like', '%' . $q . '%')
+                    ->paginate(3);
 
-        return Response()->json(['supplier' => $supplier], 200);
+        return Response::json($supplier);
     }
 
     public function store(Request $request){

@@ -31,6 +31,16 @@ class LogistikController extends Controller
         return Response::json($logistik);
     }
 
+    public function search(Request $request){
+
+        $q = $request->input('q');
+        $logistik = DB::table('t_logistik')
+                    ->where('nama_barang', 'like', '%' . $q . '%')
+                    ->paginate(3);
+
+        return Response::json($logistik);
+    }
+
     public function store(Request $request){
         $logistik=DB::table('t_logistik')->insert([
             'id_kategori' => $request->id_kategori,

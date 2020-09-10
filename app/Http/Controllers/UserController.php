@@ -13,7 +13,7 @@ class UserController extends Controller
         $user=DB::table('t_user')
         ->join('t_role','t_user.id_role','=','t_role.id')
         ->select('t_user.*', 't_role.nama_role')
-        ->get();
+        ->paginate(3);
         
         return Response::json($user);
     }
@@ -25,6 +25,16 @@ class UserController extends Controller
         ->where('t_user.id', '=', $id)
         ->get();
         
+        return Response::json($user);
+    }
+
+    public function search(Request $request){
+
+        $q = $request->input('q');
+        $user = DB::table('t_user')
+                    ->where('nama', 'like', '%' . $q . '%')
+                    ->paginate(3);
+
         return Response::json($user);
     }
 
