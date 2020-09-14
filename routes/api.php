@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+//contact us
+Route::get('/contact', 'ContactController@index');
+Route::get('/contact/{id}', 'ContactController@show');
+Route::post('/contact', 'ContactController@store');
+Route::put('/contact/{id}', 'ContactController@update');
+
 //user
 Route::get('/user', 'UserController@index');
 Route::get('/user/{id}', 'UserController@show');
