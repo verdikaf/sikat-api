@@ -488,6 +488,7 @@ class ComposerStaticInit9de6ac11971f8f1a0e533d3d81631dd7
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriController.php',
         'App\\Http\\Controllers\\LogistikController' => __DIR__ . '/../..' . '/app/Http/Controllers/LogistikController.php',
@@ -510,7 +511,9 @@ class ComposerStaticInit9de6ac11971f8f1a0e533d3d81631dd7
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\t_contact' => __DIR__ . '/../..' . '/app/t_contact.php',
+        'App\\t_image' => __DIR__ . '/../..' . '/app/t_image.php',
         'App\\t_kategori_logistik' => __DIR__ . '/../..' . '/app/t_kategori_logistik.php',
+        'App\\t_laporan_bencana' => __DIR__ . '/../..' . '/app/t_laporan_bencana.php',
         'App\\t_logistik' => __DIR__ . '/../..' . '/app/t_logistik.php',
         'App\\t_menu' => __DIR__ . '/../..' . '/app/t_menu.php',
         'App\\t_role' => __DIR__ . '/../..' . '/app/t_role.php',

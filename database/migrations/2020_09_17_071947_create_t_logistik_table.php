@@ -15,12 +15,14 @@ class CreateTLogistikTable extends Migration
     {
         Schema::create('t_logistik', function (Blueprint $table) {
             $table->Increments('id_logistik');
-            $table->integer('id_kategori');
+            $table->integer('id_kategori')->unsigned();
             $table->string('nama_barang', 45);
             $table->integer('stok');
-            $table->integer('id_supplier');
+            $table->integer('id_supplier')->unsigned();
             $table->string('status', 45);
             $table->date('expired');
+            $table->foreign('id_kategori')->references('id')->on('t_kategori_logistik');
+            $table->foreign('id_supplier')->references('id')->on('t_supplier');
         });
     }
 

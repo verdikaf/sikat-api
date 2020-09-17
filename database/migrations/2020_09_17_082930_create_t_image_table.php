@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTSupplierTable extends Migration
+class CreateTImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTSupplierTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_supplier', function (Blueprint $table) {
+        Schema::create('t_image', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('nama', 45);
-            $table->text('alamat');
+            $table->string('foto_bencana');
+            $table->integer('id_laporan_bencana')->unsigned();
+            $table->foreign('id_laporan_bencana')->references('id')->on('t_laporan_bencana');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateTSupplierTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_supplier');
+        Schema::dropIfExists('t_image');
     }
 }

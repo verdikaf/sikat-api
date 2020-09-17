@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\ContactController' => $baseDir . '/app/Http/Controllers/ContactController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\KategoriController' => $baseDir . '/app/Http/Controllers/KategoriController.php',
     'App\\Http\\Controllers\\LogistikController' => $baseDir . '/app/Http/Controllers/LogistikController.php',
@@ -30,7 +31,9 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\t_contact' => $baseDir . '/app/t_contact.php',
+    'App\\t_image' => $baseDir . '/app/t_image.php',
     'App\\t_kategori_logistik' => $baseDir . '/app/t_kategori_logistik.php',
+    'App\\t_laporan_bencana' => $baseDir . '/app/t_laporan_bencana.php',
     'App\\t_logistik' => $baseDir . '/app/t_logistik.php',
     'App\\t_menu' => $baseDir . '/app/t_menu.php',
     'App\\t_role' => $baseDir . '/app/t_role.php',

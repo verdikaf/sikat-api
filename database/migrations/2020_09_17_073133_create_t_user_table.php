@@ -24,7 +24,8 @@ class CreateTUserTable extends Migration
             $table->string('alamat', 255);
             $table->string('password', 65);
             $table->string('foto', 255);
-            $table->integer('id_role');
+            $table->integer('id_role')->unsigned();
+            $table->foreign('id_role')->references('id')->on('t_role');
         });
     }
 

@@ -17,7 +17,8 @@ class CreateTMenuTable extends Migration
             $table->Increments('id');
             $table->string('nama_menu', 45);
             $table->string('url', 100);
-            $table->integer('id_role');
+            $table->integer('id_role')->unsigned();
+            $table->foreign('id_role')->references('id')->on('t_role');
         });
     }
 
