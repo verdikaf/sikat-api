@@ -75,6 +75,7 @@ class LogistikController extends Controller
         $logistik=DB::table('t_logistik')
         ->where('id_logistik', $id)
         ->update([
+            'id_logistik' => $request->id_logistik,
             'id_kategori' => $request->id_kategori,
             'nama_barang' => $request->nama_barang,
             'stok' => $request->stok,
