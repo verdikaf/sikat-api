@@ -6,6 +6,7 @@ use App\t_supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Response;
+use Validator;
 
 class SupplierController extends Controller
 {
@@ -32,6 +33,18 @@ class SupplierController extends Controller
     }
 
     public function store(Request $request){
+        $valid = Validator::make($request->all(), [
+            'nama' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        if($valid->fails()){
+            return response()->json(
+                ['error'=>$valid->errors()],
+                403
+            );
+        }
+
         return t_supplier::create($request->all());
     }
 
