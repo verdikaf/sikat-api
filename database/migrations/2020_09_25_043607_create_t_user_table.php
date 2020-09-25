@@ -14,14 +14,14 @@ class CreateTUserTable extends Migration
     public function up()
     {
         Schema::create('t_user', function (Blueprint $table) {
-            $table->Increments('id');
+            $table->bigIncrements('id');
             $table->string('nama', 45);
             $table->string('jenis_kelamin', 15);
             $table->string('agama', 15);
             $table->string('tempat_lahir', 100);
             $table->date('tgl_lahir');
             $table->string('no_telp', 15);
-            $table->string('alamat', 255);
+            $table->text('alamat');
             $table->string('password', 65);
             $table->string('foto', 255);
             $table->integer('id_role')->unsigned();

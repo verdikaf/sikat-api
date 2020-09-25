@@ -6,6 +6,7 @@ use App\t_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Response;
+use Validator;
 
 class UserController extends Controller
 {
@@ -39,6 +40,30 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
+        $valid = Validator::make($request->all(), [
+            'id' => 'required|numeric|min:8|max:16',
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'tempat_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'no_telp' => 'required|numeric',
+            'alamat' => 'required',
+            'password' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'id_role' => 'required|numeric'
+        ]);
+
+        if($valid->fails()){
+            return response()->json(
+                ['error'=>$valid->errors()],
+                403
+            );
+        }
+
+        $imageName = time().'_'.$request->foto->extension();
+        $request->foto->move(public_path('/assets/images/profile'), $imageName);
+
         $user=DB::table('t_user')->insert([
             'nama' => $request->nama,
             'jenis_kelamin' => $request->jenis_kelamin,
@@ -48,7 +73,7 @@ class UserController extends Controller
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
             'password' => $request->password,
-            'foto' => $request->foto,
+            'foto' => $imageName,
             'id_role' => $request->id_role
         ]);
 
