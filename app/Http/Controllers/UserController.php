@@ -41,7 +41,7 @@ class UserController extends Controller
 
     public function store(Request $request){
         $valid = Validator::make($request->all(), [
-            'id' => 'required|numeric|min:8|max:16',
+            'id' => 'required|numeric|digits_between:8,16',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
@@ -96,6 +96,30 @@ class UserController extends Controller
             'id_role' => $request->id_role
         ]);
 
+        return Response::json($user);
+    }
+
+    public function login(Request $request){
+        $valid = Validator::make($request->all(), [
+            'id' => 'required|numeric|digits_between:8,16',
+            'password' => 'required'
+        ]);
+
+        if($valid->fails()){
+            return response()->json(
+                ['error'=>$valid->errors()],
+                403
+            );
+        }
+
+        $user=DB::table('t_user')
+        ->join('t_role','t_user.id_role','=','t_role.id')
+        ->select('t_user.*', 't_role.nama_role')
+        ->where(
+            ['t_user.id' => $request->id, 't_user.password' => $request->password]
+            )
+        ->get();
+        
         return Response::json($user);
     }
 }

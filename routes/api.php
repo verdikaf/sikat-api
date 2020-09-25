@@ -24,6 +24,9 @@ Route::get('/contact/{id}', 'ContactController@show');
 Route::post('/contact', 'ContactController@store');
 Route::put('/contact/{id}', 'ContactController@update');
 
+//login
+Route::post('/login', 'UserController@login');
+
 //user
 Route::get('/user', 'UserController@index');
 Route::get('/user/{id}', 'UserController@show');
