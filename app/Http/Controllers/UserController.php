@@ -61,7 +61,7 @@ class UserController extends Controller
             );
         }
 
-        $imageName = time().'_'.$request->foto->extension();
+        $imageName = time().'_'.$request->foto->getClientOriginalName();
         $request->foto->move(public_path('/assets/images/profile'), $imageName);
 
         $user=DB::table('t_user')->insert([
@@ -81,22 +81,79 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-        $user=DB::table('t_user')
-        ->where('id', $id)
-        ->update([
-            'nama' => $request->nama,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'agama' => $request->agama,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'no_telp' => $request->no_telp,
-            'alamat' => $request->alamat,
-            'password' => $request->password,
-            'foto' => $request->foto,
-            'id_role' => $request->id_role
+        $user = t_user::find($id);
+
+        $valid = Validator::make($request->all(), [
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'tempat_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'no_telp' => 'required|numeric',
+            'alamat' => 'required',
+            'password' => 'required',
+            'id_role' => 'required|numeric'
         ]);
 
-        return Response::json($user);
+        if($valid->fails()){
+            return response()->json(
+                ['error'=>$valid->errors()],
+                403
+            );
+        }
+
+        if($request->foto != ''){
+            $validImage = Validator::make($request->foto, [
+                'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+    
+            if($validImage->fails()){
+                return response()->json(
+                    ['error'=>$validImage->errors()],
+                    403
+                );
+            }
+
+            $path = public_path().'/assets/images/profile';
+  
+            //code for remove old file
+            if($user->foto != ''  && $user->foto != null){
+                 $file_old = $path.$user->foto;
+                 unlink($file_old);
+            }
+  
+            //upload new file
+            $imageName = time().'_'.$request->foto->getClientOriginalName();
+            $request->foto->move($path, $imageName);
+  
+            //for update in table
+            $user->update([
+                'nama' => $request->nama,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'agama' => $request->agama,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'no_telp' => $request->no_telp,
+                'alamat' => $request->alamat,
+                'password' => $request->password,
+                'foto' => $imageName,
+                'id_role' => $request->id_role
+            ]);
+        } else {
+            $user->update([
+                'nama' => $request->nama,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'agama' => $request->agama,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'no_telp' => $request->no_telp,
+                'alamat' => $request->alamat,
+                'password' => $request->password,
+                'id_role' => $request->id_role
+            ]);
+        }
+
+        return $user;
     }
 
     public function login(Request $request){

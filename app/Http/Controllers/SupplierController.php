@@ -49,6 +49,18 @@ class SupplierController extends Controller
     }
 
     public function update(Request $request, $id){
+        $valid = Validator::make($request->all(), [
+            'nama' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        if($valid->fails()){
+            return response()->json(
+                ['error'=>$valid->errors()],
+                403
+            );
+        }
+        
         $supplier = t_supplier::findOrFail($id);
         $supplier->update($request->all());
 

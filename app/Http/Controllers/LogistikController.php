@@ -44,10 +44,10 @@ class LogistikController extends Controller
 
     public function store(Request $request){
         $valid = Validator::make($request->all(), [
-            'id_kategori' => 'required',
+            'id_kategori' => 'required|numeric',
             'nama_barang' => 'required',
-            'stok' => 'required',
-            'id_supplier' => 'required',
+            'stok' => 'required|numeric',
+            'id_supplier' => 'required|numeric',
             'status' => 'required',
             'expired' => 'required'
         ]);
