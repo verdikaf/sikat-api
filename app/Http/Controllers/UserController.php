@@ -65,6 +65,7 @@ class UserController extends Controller
         $request->foto->move(public_path('/assets/images/profile'), $imageName);
 
         $user=DB::table('t_user')->insert([
+            'id' => $request->id,
             'nama' => $request->nama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'agama' => $request->agama,
