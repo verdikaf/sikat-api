@@ -32,7 +32,6 @@ class LaporanController extends Controller
         $valid = Validator::make($request->all(), [
             'jenis_bencana' => 'required',
             'lokasi' => 'required',
-            'kalkulasi' => 'required',
             'waktu' => 'required',
             'jml_korban' => 'required',
             'jml_meninggal' => 'required'
@@ -52,7 +51,6 @@ class LaporanController extends Controller
         $valid = Validator::make($request->all(), [
             'jenis_bencana' => 'required',
             'lokasi' => 'required',
-            'kalkulasi' => 'required',
             'waktu' => 'required',
             'jml_korban' => 'required',
             'jml_meninggal' => 'required'

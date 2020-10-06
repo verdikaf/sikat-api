@@ -62,7 +62,16 @@ Route::put('/kategori/{id}', 'KategoriController@update');
 
 //logistik
 Route::get('/logistik', 'LogistikController@index');
+Route::get('/logistik/all', 'LogistikController@showAll');
 Route::get('/logistik/{id}', 'LogistikController@show');
 Route::post('/logistik', 'LogistikController@store');
 Route::post('/logistik/search', 'LogistikController@search');
 Route::put('/logistik/{id}', 'LogistikController@update');
+
+//laporan
+Route::get('/laporan', 'LaporanController@index');
+Route::get('/laporan/all', 'LaporanController@showAll');
+Route::get('/laporan/{id}', 'LaporanController@show');
+Route::post('/laporan', 'LaporanController@store');
+Route::post('/laporan/search', 'LaporanController@search');
+Route::put('/laporan/{id}', 'LaporanController@update');
