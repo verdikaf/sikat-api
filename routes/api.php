@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+//dashboard
+Route::get('/chart/logistik', 'DashboardController@chartLogistik');
+
 //contact us
 Route::get('/contact', 'ContactController@index');
 Route::get('/contact/{id}', 'ContactController@show');

@@ -21,6 +21,7 @@ class CreateTLogistikTable extends Migration
             $table->integer('id_supplier')->unsigned();
             $table->string('status', 45);
             $table->date('expired');
+            $table->timestamp('created_at');
             $table->foreign('id_kategori')->references('id')->on('t_kategori_logistik');
             $table->foreign('id_supplier')->references('id')->on('t_supplier');
         });

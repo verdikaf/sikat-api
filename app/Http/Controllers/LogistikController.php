@@ -18,15 +18,16 @@ class LogistikController extends Controller
         ->orderByDesc('id_logistik')
         ->paginate(3);
         
-        return Response::json($logistik);
+        return $logistik;
     }
 
     public function showAll(){
         $logistik=DB::table('t_logistik')
         ->join('t_kategori_logistik','t_logistik.id_kategori','=','t_kategori_logistik.id')
         ->join('t_supplier','t_logistik.id_supplier','=','t_supplier.id')
-        ->select('t_logistik.id_logistik', 't_logistik.nama_barang', 't_logistik.stok', 't_logistik.status', 't_logistik.expired', 't_logistik.id_kategori', 't_kategori_logistik.jenis_kategori','t_logistik.id_supplier', 't_supplier.nama');
-        
+        ->select('t_logistik.id_logistik', 't_logistik.nama_barang', 't_logistik.stok', 't_logistik.status', 't_logistik.expired', 't_logistik.id_kategori', 't_kategori_logistik.jenis_kategori','t_logistik.id_supplier', 't_supplier.nama')
+        ->get();
+
         return Response::json($logistik);
     }
 
@@ -45,10 +46,12 @@ class LogistikController extends Controller
 
         $q = $request->input('q');
         $logistik = DB::table('t_logistik')
+                    ->join('t_kategori_logistik','t_logistik.id_kategori','=','t_kategori_logistik.id')
+                    ->join('t_supplier','t_logistik.id_supplier','=','t_supplier.id')
+                    ->select('t_logistik.id_logistik', 't_logistik.nama_barang', 't_logistik.stok', 't_logistik.status', 't_logistik.expired', 't_logistik.id_kategori', 't_kategori_logistik.jenis_kategori','t_logistik.id_supplier', 't_supplier.nama')
                     ->where('nama_barang', 'like', '%' . $q . '%')
                     ->paginate(3);
-
-        return Response::json($logistik);
+        return $logistik;
     }
 
     public function store(Request $request){
