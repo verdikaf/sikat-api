@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\t_laporan_bencana;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
