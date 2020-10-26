@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\t_laporan_bencana;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
@@ -19,13 +21,8 @@ class LaporanController extends Controller
     }
 
     public function search(Request $request){
-
         $q = $request->input('q');
-        $laporan = DB::table('t_laporan_bencana')
-                    ->where('jenis_bencana', 'like', '%' . $q . '%')
-                    ->paginate(3);
-
-        return Response::json($laporan);
+        return t_laporan_bencana::query()->where('jenis_bencana', 'like', '%' . $q . '%')->paginate(3);
     }
 
     public function store(Request $request){
