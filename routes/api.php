@@ -78,3 +78,27 @@ Route::get('/laporan/{id}', 'LaporanController@show');
 Route::post('/laporan', 'LaporanController@store');
 Route::post('/laporan/search', 'LaporanController@search');
 Route::put('/laporan/{id}', 'LaporanController@update');
+
+//bencana
+Route::get('/bencana', 'BencanaController@index');
+Route::get('/bencana/all', 'BencanaController@showAll');
+Route::get('/bencana/{id}', 'BencanaController@show');
+Route::post('/bencana', 'BencanaController@store');
+Route::post('/bencana/search', 'BencanaController@search');
+Route::put('/bencana/{id}', 'BencanaController@update');
+
+//tim
+Route::get('/tim', 'TimController@index');
+Route::get('/tim/all', 'TimController@showAll');
+Route::get('/tim/{id}', 'TimController@show');
+Route::post('/tim', 'TimController@store');
+Route::post('/tim/search', 'TimController@search');
+Route::put('/tim/{id}', 'TimController@update');
+
+//bantuan
+Route::get('/bantuan', 'BantuanController@index');
+Route::get('/bantuan/all', 'BantuanController@showAll');
+Route::get('/bantuan/{id}', 'BantuanController@show');
+Route::post('/bantuan', 'BantuanController@store');
+Route::post('/bantuan/search', 'BantuanController@search');
+Route::put('/bantuan/{id}', 'BantuanController@update');

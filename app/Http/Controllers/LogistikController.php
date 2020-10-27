@@ -84,6 +84,21 @@ class LogistikController extends Controller
     }
 
     public function update(Request $request, $id){
+        $valid = Validator::make($request->all(), [
+            'id_kategori' => 'required|numeric',
+            'nama_barang' => 'required',
+            'stok' => 'required|numeric',
+            'id_supplier' => 'required|numeric',
+            'status' => 'required',
+            'expired' => 'required'
+        ]);
+
+        if($valid->fails()){
+            return response()->json(
+                ['error'=>$valid->errors()],
+                403
+            );
+        }
 
         $logistik=DB::table('t_logistik')
         ->where('id_logistik', $id)
